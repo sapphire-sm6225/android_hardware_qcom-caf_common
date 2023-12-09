@@ -164,8 +164,12 @@ else ifneq ($(filter $(UM_4_14_FAMILY),$(TARGET_BOARD_PLATFORM)),)
     MSM_VIDC_TARGET_LIST := $(UM_4_14_FAMILY)
     QCOM_HARDWARE_VARIANT := sm8150
 else ifneq ($(filter $(UM_4_19_BENGAL_FAMILY) $(UM_5_15_BENGAL_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+ifeq ($(TARGET_BOARD_PLATFORM)$(TARGET_BOARD_SUFFIX),bengal_515)
+    QCOM_HARDWARE_VARIANT := sm6225
+else
     MSM_VIDC_TARGET_LIST := $(UM_4_19_BENGAL_FAMILY)
     QCOM_HARDWARE_VARIANT := bengal
+endif
 else ifneq ($(filter $(UM_5_4_FAMILY),$(TARGET_BOARD_PLATFORM)),)
     QCOM_HARDWARE_VARIANT := sm8350
 else ifneq ($(filter $(UM_5_10_FAMILY),$(TARGET_BOARD_PLATFORM)),)
@@ -201,13 +205,15 @@ endif
 # Add data-ipa-cfg-mgr to PRODUCT_SOONG_NAMESPACES if needed
 ifneq ($(USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR),true)
     ifneq ($(filter $(LEGACY_UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
+    ifeq ($(TARGET_BOARD_PLATFORM)$(TARGET_BOARD_SUFFIX),bengal_515)
+        PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/sm6225/data-ipa-cfg-mgr
+    else
         PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um
+    endif
     else ifneq ($(filter $(UM_5_10_FAMILY),$(TARGET_BOARD_PLATFORM)),)
         PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/sm8450/data-ipa-cfg-mgr
     else ifneq ($(filter $(UM_5_15_FAMILY),$(TARGET_BOARD_PLATFORM)),)
         PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/sm8550/data-ipa-cfg-mgr
-    else ifneq ($(filter $(UM_4_19_BENGAL_FAMILY) $(UM_5_15_BENGAL_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-        PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/sm6225/data-ipa-cfg-mgr
     endif
 endif
 
