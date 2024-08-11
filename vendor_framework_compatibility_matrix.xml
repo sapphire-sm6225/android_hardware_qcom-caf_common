@@ -798,7 +798,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.gnss</name>
-        <version>1-5</version>
+        <version>1-6</version>
         <interface>
             <name>ILocAidlGnss</name>
             <instance>default</instance>
@@ -853,30 +853,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-  <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.improvetouch.blobmanager</name>
-        <version>1.0</version>
-        <interface>
-            <name>IBlobManager</name>
-            <instance>BlobManagerService</instance>
-        </interface>
-    </hal>
-  <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.improvetouch.gesturemanager</name>
-        <version>1.0</version>
-        <interface>
-            <name>IGestureManager</name>
-            <instance>GestureManagerService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.improvetouch.touchcompanion</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITouchCompanion</name>
-            <instance>TouchCompanionService</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -1635,6 +1611,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
          <instance>default</instance>
     </interface>
     </hal>
+
     <!-- UMD Adaptor Service -->
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.umd</name>
@@ -1642,6 +1619,21 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
         <version>1.0</version>
         <interface>
             <name>IUMDAdaptor</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.vst</name>
+        <interface>
+            <name>ICameraVstSys</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ICameraVstSysFactory</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ICameraVstSysCallback</name>
             <instance>default</instance>
         </interface>
     </hal>
