@@ -443,10 +443,10 @@ ifeq ($(BOARD_SUPPORTS_OPENSOURCE_STHAL),true)
 endif
 
 # Add thermal HAL to PRODUCT_SOONG_NAMESPACES
-ifneq ($(filter $(LEGACY_UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-    PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/thermal-legacy-um
-else
+ifneq ($(filter $(UM_6_6_FAMILY),$(TARGET_BOARD_PLATFORM)),)
     PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/thermal
+else
+    PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/thermal-legacy-um
 endif
 
 # Add wlan to PRODUCT_SOONG_NAMESPACES
